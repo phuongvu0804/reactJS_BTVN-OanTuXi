@@ -1,0 +1,13 @@
+.notiName,
+.score {
+    font-size: 42px;
+    font-weight: 600;
+}
+
+.notiName {
+    color: #5bf15b;
+}
+
+.score {
+    color: orange;
+}

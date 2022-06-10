@@ -1,0 +1,24 @@
+.playOption {
+    position: absolute;
+    top: -50%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.playOption:before{
+    position: absolute;
+    content: "";
+    bottom: -18%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 10px;
+    border-style: solid;
+    border-color: #79f379 transparent transparent transparent;
+}
+
+.playerOptionImg {
+    width: 60px;
+    padding: 10px;
+    background: white;
+    border: 5px solid #79f379;
+}
