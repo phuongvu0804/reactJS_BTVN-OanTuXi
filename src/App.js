@@ -2,31 +2,41 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./App.css";
 import { Noti, Player } from "./components";
-import { actResetOption } from "./redux/actions";
+import { actDetermineResult } from "./redux/actions";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      gameNumber: [],
-      winGameNumber: 0,
-      players: [
-        {
-          type: "user",
-          image: "./assets/images/player.png",
-          choice: 0,
-        },
-        {
-          type: "computer",
-          image: "./assets/images/playerComputer.png",
-          choice: 0,
-        },
-      ],
-    };
-  }
+
+  handleResult = () => {
+    let { winGameNumber, optionUser, optionComputer, determineResult} = this.props;
+    switch (optionUser) {
+      case 0:
+        switch (optionComputer) {
+          case 2:
+            winGameNumber++;
+            return determineResult(winGameNumber)
+        }
+        break;
+      case 1:
+        switch (optionComputer) {
+          case 0:
+            winGameNumber++
+            return determineResult(winGameNumber)
+        }
+        break;
+      case 2:
+        switch (optionComputer) {
+          case 1:
+            winGameNumber++;
+            return determineResult(winGameNumber)
+        }
+        break;
+      default:
+        console.error("Result cannot be determined");
+    }
+
+  };
 
   render() {
-    const { resetOption } = this.props;
     return (
       <div className="App">
         <div className="container">
@@ -39,7 +49,7 @@ class App extends Component {
               <Noti type="thắng" />
               <Noti type="chơi" />
             </div>
-            <button className="info-button" onClick={resetOption}>
+            <button className="info-button" onClick={() => this.handleResult()}>
               Play game
             </button>
           </div>
@@ -51,15 +61,17 @@ class App extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapStateToProps = (state) => {
   return {
-    resetOption: () => dispatch(actResetOption()),
+    winGameNumber: state.gameReducer.winGameNumber,
+    optionUser: state.gameReducer.optionUser,
+    optionComputer: state.gameReducer.optionComputer,
   };
 };
 
-const mapStateToProps = (state) => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    players: state.gameReducer.players,
+    determineResult: payload => dispatch(actDetermineResult(payload)),
   };
 };
 

@@ -1,15 +1,15 @@
 import * as ActionType from "./../constants"
 
-export const actResetOption = payload => {
+export const actAddOption = payload => {
     return {
-        type: ActionType.RESET_OPTION,
+        type: ActionType.ADD_OPTION,
         payload
     }
 }
 
-export const actAddOption = payload => {
+export const actDetermineResult = payload => {
     return {
-        type: ActionType.ADD_OPTION,
+        type: ActionType.DETERMINE_RESULT,
         payload
     }
 }

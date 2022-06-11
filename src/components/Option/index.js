@@ -8,6 +8,7 @@ class Option extends Component {
         super(props)
         this.option= React.createRef()
     }
+    
     handleAddOption = optionName => {
         const { addOption } = this.props
         switch (optionName) {
@@ -40,7 +41,7 @@ class Option extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addOption: payload => dispatch(actAddOption(payload))
+        addOption: payload => dispatch(actAddOption(payload)),
     }
 }
 
