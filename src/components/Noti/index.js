@@ -19,8 +19,8 @@ class Noti extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    gameNumber: state.gameReducer.gameNumber,
-    winGameNumber: state.gameReducer.winGameNumber
+    gameNumber: state.gameNumber,
+    winGameNumber: state.winGameNumber
   };
 };
 

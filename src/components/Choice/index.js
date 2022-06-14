@@ -41,8 +41,8 @@ class Choice extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    optionComputer: state.gameReducer.optionComputer,
-    optionUser: state.gameReducer.optionUser
+    optionComputer: state.optionComputer,
+    optionUser: state.optionUser
 
   }
  }

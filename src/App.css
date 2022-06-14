@@ -15,16 +15,30 @@ body {
   justify-content: space-around;
 }
 
+.dashboard__title,
+.dashboard__score {
+    font-size: 42px;
+    font-weight: 600;
+} 
+
+.dashboard__title {
+  color: #5bf15b;
+}
+
+.dashboard__score {
+  color: orange;
+}
+
 .info {
   width: 30%;
 }
 
-.info-title {
+.info__title {
   font-size: 40px;
   color: orange;
 }
 
-.info-button {
+.info__button {
   padding: 8px 10px;
   background: #29a729;
   margin: 20px auto 0;
@@ -36,7 +50,7 @@ body {
   color: white;
 }
 
-.info-button:hover {
+.info__button:hover {
   opacity: 0.8;
 }
 

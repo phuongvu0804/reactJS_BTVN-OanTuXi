@@ -6,50 +6,30 @@ import { actDetermineResult } from "./redux/actions";
 
 class App extends Component {
 
-  handleResult = () => {
-    let { winGameNumber, optionUser, optionComputer, determineResult} = this.props;
-    switch (optionUser) {
-      case 0:
-        switch (optionComputer) {
-          case 2:
-            winGameNumber++;
-            return determineResult(winGameNumber)
-        }
-        break;
-      case 1:
-        switch (optionComputer) {
-          case 0:
-            winGameNumber++
-            return determineResult(winGameNumber)
-        }
-        break;
-      case 2:
-        switch (optionComputer) {
-          case 1:
-            winGameNumber++;
-            return determineResult(winGameNumber)
-        }
-        break;
-      default:
-        console.error("Result cannot be determined");
-    }
-
-  };
-
   render() {
     return (
       <div className="App">
         <div className="container">
           <Player type="user" />
           <div className="info">
-            <h2 className="info-title">
+            <h2 className="info__title">
               I'm iron man, <br /> I love you 3000 !!!
             </h2>
-            <div>
-              <Noti type="thắng" />
-              <Noti type="chơi" />
+            <div className="dashboard">
+              <div>
+                <span className="dashboard__title">Số bàn thắng: </span>
+                <span className="dashboard__score">
+                  {this.props.winGameNumber}
+                </span>
+              </div>
+              <div>
+                <span className="dashboard__title">Số bàn chơi: </span>
+                <span className="dashboard__score">
+                  {this.props.gameNumber}
+                </span>
+              </div>
             </div>
-            <button className="info-button" onClick={() => this.handleResult()}>
+            <button className="info__button" onClick={this.props.determineResult}>
               Play game
             </button>
           </div>
@@ -63,15 +43,16 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    winGameNumber: state.gameReducer.winGameNumber,
-    optionUser: state.gameReducer.optionUser,
-    optionComputer: state.gameReducer.optionComputer,
+    winGameNumber: state.winGameNumber,
+    gameNumber: state.gameNumber,
+    optionUser: state.optionUser,
+    optionComputer: state.optionComputer,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    determineResult: payload => dispatch(actDetermineResult(payload)),
+    determineResult: (payload) => dispatch(actDetermineResult(payload)),
   };
 };
 

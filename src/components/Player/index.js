@@ -28,7 +28,7 @@ class Player extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    players: state.gameReducer.players
+    players: state.players
   };
 };
 
